@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ShoppingCart, Heart, Share2, FileText, Truck, ShieldCheck } from "lucide-react"
 import prisma from "@/lib/prisma"
 import { formatCurrency, calculateDiscount } from "@/lib/utils"
+import { getProductImages } from "@/lib/product-images"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
     const { slug } = await params
     const product = await prisma.product.findUnique({
         where: { slug },
-        include: { images: true },
+        include: { images: true, category: true },
     })
 
     if (!product) {
@@ -43,11 +44,13 @@ export async function generateMetadata({ params }: ProductPageProps) {
         }
     }
 
+    const imageUrls = getProductImages(product.images, product.category?.slug)
+
     return {
         title: product.name,
         description: product.shortDescription || product.description?.substring(0, 160),
         openGraph: {
-            images: product.images.map(img => img.url) || [],
+            images: imageUrls,
         },
     }
 }
@@ -92,7 +95,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         console.error("Error parsing specifications:", e)
     }
 
-    const imageUrls = product.images.map(img => img.url)
+    const imageUrls = getProductImages(product.images, product.category?.slug)
 
     return (
         <div className="container-custom py-8 md:py-12">

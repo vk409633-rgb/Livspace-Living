@@ -4,6 +4,7 @@ import { Product } from '@prisma/client'
 
 export type CartProduct = Product & {
     images?: { url: string }[]
+    category?: { slug: string; name: string } | null
 }
 
 export interface CartItem {

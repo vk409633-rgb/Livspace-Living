@@ -12,7 +12,7 @@ interface ImageGalleryProps {
 export function ImageGallery({ images, name }: ImageGalleryProps) {
     const [selectedImage, setSelectedImage] = useState(0)
 
-    const displayImages = images.length > 0 ? images : ["/placeholder-product.jpg"]
+    const displayImages = images.length > 0 ? images : ["https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"]
 
     return (
         <div className="flex flex-col gap-4">

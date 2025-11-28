@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { formatCurrency, calculateDiscount } from "@/lib/utils"
+import { getProductImageUrl } from "@/lib/product-images"
 import { ProductWithRelations } from "@/types"
 import { useCartStore } from "@/lib/store/cart"
 
@@ -16,7 +17,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
     const discount = product.mrp ? calculateDiscount(product.mrp, product.price) : 0
-    const imageUrl = product.images && product.images.length > 0 ? product.images[0].url : "/placeholder-product.jpg"
+    const imageUrl = getProductImageUrl(product.images, product.category?.slug)
     const addItem = useCartStore((state) => state.addItem)
 
     return (

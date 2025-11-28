@@ -54,7 +54,7 @@ export function ProductForm({ categories, suppliers, initialData }: ProductFormP
         : []
 
     const form = useForm<ProductFormValues>({
-        resolver: zodResolver(productSchema),
+        resolver: zodResolver(productSchema) as any,
         defaultValues: {
             name: initialData?.name || "",
             slug: initialData?.slug || "",

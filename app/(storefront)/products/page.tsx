@@ -46,8 +46,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
 
     if (params.search) {
         where.OR = [
-            { name: { contains: params.search, mode: "insensitive" } },
-            { description: { contains: params.search, mode: "insensitive" } },
+            { name: { contains: params.search } },
+            { description: { contains: params.search } },
         ]
     }
 

@@ -12,6 +12,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import prisma from "@/lib/prisma"
 import { formatCurrency } from "@/lib/utils"
+import { getProductImageUrl } from "@/lib/product-images"
 import Image from "next/image"
 
 export const revalidate = 0
@@ -73,18 +74,12 @@ export default async function AdminProductsPage() {
                                 <TableRow key={product.id}>
                                     <TableCell>
                                         <div className="relative h-12 w-12 rounded-md overflow-hidden bg-slate-100">
-                                            {product.images && product.images.length > 0 ? (
-                                                <Image
-                                                    src={product.images[0].url}
-                                                    alt={product.name}
-                                                    fill
-                                                    className="object-cover"
-                                                />
-                                            ) : (
-                                                <div className="w-full h-full flex items-center justify-center text-xs text-muted-foreground">
-                                                    No image
-                                                </div>
-                                            )}
+                                            <Image
+                                                src={getProductImageUrl(product.images, product.category?.slug)}
+                                                alt={product.name}
+                                                fill
+                                                className="object-cover"
+                                            />
                                         </div>
                                     </TableCell>
                                     <TableCell className="font-medium max-w-[300px] truncate">

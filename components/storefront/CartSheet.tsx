@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/sheet"
 import { Separator } from "@/components/ui/separator"
 import { useCartStore } from "@/lib/store/cart"
+import { getProductImageUrl } from "@/lib/product-images"
 import Image from "next/image"
 import { formatCurrency } from "@/lib/utils"
 import Link from "next/link"
@@ -67,7 +68,7 @@ export function CartSheet() {
                                 <div key={item.product.id} className="flex gap-4">
                                     <div className="relative h-20 w-20 overflow-hidden rounded-md border bg-slate-50 shrink-0">
                                         <Image
-                                            src={item.product.images?.[0]?.url || "/placeholder-product.jpg"}
+                                            src={getProductImageUrl(item.product.images, item.product.category?.slug)}
                                             alt={item.product.name}
                                             fill
                                             className="object-cover"

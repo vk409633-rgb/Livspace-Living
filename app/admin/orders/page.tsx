@@ -96,12 +96,12 @@ export default async function AdminOrdersPage() {
                                         {formatCurrency(order.total)}
                                     </TableCell>
                                     <TableCell>
-                                        <Badge className={paymentStatusColors[order.paymentStatus]}>
+                                        <Badge className={paymentStatusColors[order.paymentStatus as keyof typeof paymentStatusColors] || "bg-gray-100 text-gray-800"}>
                                             {order.paymentStatus}
                                         </Badge>
                                     </TableCell>
                                     <TableCell>
-                                        <Badge className={statusColors[order.status]}>
+                                        <Badge className={statusColors[order.status as keyof typeof statusColors] || "bg-gray-100 text-gray-800"}>
                                             {order.status}
                                         </Badge>
                                     </TableCell>

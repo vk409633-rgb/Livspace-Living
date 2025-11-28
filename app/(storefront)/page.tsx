@@ -16,6 +16,11 @@ async function getFeaturedProducts() {
             orderBy: {
                 createdAt: 'desc',
             },
+            include: {
+                images: true,
+                category: true,
+                supplier: true,
+            },
         })
         return products
     } catch (error) {
@@ -33,6 +38,11 @@ async function getNewArrivals() {
             take: 4,
             orderBy: {
                 createdAt: 'desc',
+            },
+            include: {
+                images: true,
+                category: true,
+                supplier: true,
             },
         })
         return products

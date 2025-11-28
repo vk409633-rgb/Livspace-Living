@@ -1,10 +1,10 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { ProductCard } from "./ProductCard"
-import { Product } from "@prisma/client"
+import { ProductWithRelations } from "@/types"
 
 interface FeaturedProductsProps {
-    products: Product[]
+    products: ProductWithRelations[]
     title?: string
     subtitle?: string
     linkHref?: string

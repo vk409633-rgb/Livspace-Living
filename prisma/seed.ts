@@ -182,7 +182,7 @@ async function main() {
             discount: 25,
             sku: 'VIT-600-001',
             stock: 500,
-            specifications: {
+            specifications: JSON.stringify({
                 size: '600x600mm',
                 finish: 'Glossy',
                 color: 'Beige',
@@ -191,7 +191,7 @@ async function main() {
                 waterAbsorption: '0.5%',
                 peiRating: 'PEI 4',
                 application: 'Floor',
-            },
+            }),
             images: ['/products/tile-1.jpg'],
             weight: 12.5,
             dimensions: '600x600x10mm',
@@ -210,7 +210,7 @@ async function main() {
             discount: 17,
             sku: 'VIT-800-002',
             stock: 200,
-            specifications: {
+            specifications: JSON.stringify({
                 size: '800x1600mm',
                 finish: 'Matt',
                 color: 'Grey',
@@ -219,7 +219,7 @@ async function main() {
                 waterAbsorption: '0.3%',
                 peiRating: 'PEI 5',
                 application: 'Floor & Wall',
-            },
+            }),
             images: ['/products/tile-2.jpg'],
             weight: 35,
             dimensions: '800x1600x12mm',
@@ -238,7 +238,7 @@ async function main() {
             discount: 20,
             sku: 'CER-300-003',
             stock: 800,
-            specifications: {
+            specifications: JSON.stringify({
                 size: '300x450mm',
                 finish: 'Glossy',
                 color: 'White',
@@ -246,7 +246,7 @@ async function main() {
                 thickness: '8mm',
                 waterAbsorption: '10%',
                 application: 'Wall',
-            },
+            }),
             images: ['/products/tile-3.jpg'],
             weight: 4.5,
             dimensions: '300x450x8mm',
@@ -264,7 +264,7 @@ async function main() {
             discount: 15,
             sku: 'VIT-200-004',
             stock: 350,
-            specifications: {
+            specifications: JSON.stringify({
                 size: '200x1200mm',
                 finish: 'Matt',
                 color: 'Brown',
@@ -274,7 +274,7 @@ async function main() {
                 peiRating: 'PEI 4',
                 application: 'Floor',
                 design: 'Wood',
-            },
+            }),
             images: ['/products/tile-4.jpg'],
             weight: 8.5,
             dimensions: '200x1200x10mm',
@@ -293,7 +293,7 @@ async function main() {
             discount: 21,
             sku: 'POR-600-005',
             stock: 300,
-            specifications: {
+            specifications: JSON.stringify({
                 size: '600x1200mm',
                 finish: 'Polished',
                 color: 'White with Grey Veins',
@@ -302,7 +302,7 @@ async function main() {
                 waterAbsorption: '0.1%',
                 peiRating: 'PEI 5',
                 application: 'Floor & Wall',
-            },
+            }),
             images: ['/products/tile-5.jpg'],
             weight: 18,
             dimensions: '600x1200x10mm',
@@ -321,13 +321,13 @@ async function main() {
             discount: 22,
             sku: 'SAN-BAS-006',
             stock: 50,
-            specifications: {
+            specifications: JSON.stringify({
                 material: 'Ceramic',
                 color: 'White',
                 type: 'Pedestal',
                 size: '550x450mm',
                 warranty: '5 years',
-            },
+            }),
             images: ['/products/basin-1.jpg'],
             weight: 25,
             isActive: true,
@@ -344,13 +344,13 @@ async function main() {
             discount: 23,
             sku: 'SAN-WC-007',
             stock: 30,
-            specifications: {
+            specifications: JSON.stringify({
                 material: 'Ceramic',
                 color: 'White',
                 type: 'Wall Mounted',
                 flushType: 'Dual Flush',
                 warranty: '10 years',
-            },
+            }),
             images: ['/products/toilet-1.jpg'],
             weight: 35,
             isActive: true,
@@ -368,13 +368,13 @@ async function main() {
             discount: 29,
             sku: 'FUR-SOF-008',
             stock: 15,
-            specifications: {
+            specifications: JSON.stringify({
                 material: 'Fabric',
                 color: 'Grey',
                 seatingCapacity: '3',
                 dimensions: '210x90x85cm',
                 warranty: '1 year',
-            },
+            }),
             images: ['/products/sofa-1.jpg'],
             weight: 80,
             isActive: true,
@@ -392,13 +392,13 @@ async function main() {
             discount: 28,
             sku: 'FUR-BED-009',
             stock: 20,
-            specifications: {
+            specifications: JSON.stringify({
                 material: 'Engineered Wood',
                 color: 'Walnut',
                 size: 'King (72x78 inches)',
                 storage: 'Hydraulic',
                 warranty: '1 year',
-            },
+            }),
             images: ['/products/bed-1.jpg'],
             weight: 120,
             isActive: true,
@@ -415,13 +415,13 @@ async function main() {
             discount: 29,
             sku: 'FUR-DIN-010',
             stock: 10,
-            specifications: {
+            specifications: JSON.stringify({
                 material: 'Solid Wood',
                 color: 'Brown',
                 seatingCapacity: '6',
                 tableSize: '180x90cm',
                 warranty: '1 year',
-            },
+            }),
             images: ['/products/dining-1.jpg'],
             weight: 150,
             isActive: true,
@@ -438,14 +438,14 @@ async function main() {
             discount: 29,
             sku: 'KIT-MOD-011',
             stock: 5,
-            specifications: {
+            specifications: JSON.stringify({
                 layout: 'L-Shaped',
                 length: '10 feet',
                 material: 'HDHMR',
                 finish: 'Acrylic',
                 includes: 'Base cabinets, Wall cabinets, Countertop',
                 warranty: '5 years',
-            },
+            }),
             images: ['/products/kitchen-1.jpg'],
             weight: 300,
             isActive: true,
@@ -462,13 +462,13 @@ async function main() {
             discount: 29,
             sku: 'LIT-PAN-012',
             stock: 100,
-            specifications: {
+            specifications: JSON.stringify({
                 wattage: '36W',
                 size: '2x2 feet',
                 color: 'Cool White',
                 lumens: '3600',
                 warranty: '2 years',
-            },
+            }),
             images: ['/products/light-1.jpg'],
             weight: 1.5,
             isActive: true,
@@ -484,13 +484,13 @@ async function main() {
             discount: 33,
             sku: 'LIT-CHA-013',
             stock: 25,
-            specifications: {
+            specifications: JSON.stringify({
                 type: 'Chandelier',
                 material: 'Crystal & Metal',
                 bulbs: '6 x E27',
                 size: '24 inches diameter',
                 warranty: '1 year',
-            },
+            }),
             images: ['/products/chandelier-1.jpg'],
             weight: 8,
             isActive: true,
@@ -499,11 +499,30 @@ async function main() {
     ]
 
     for (const product of products) {
-        await prisma.product.upsert({
+        const { images, ...productData } = product
+
+        const createdProduct = await prisma.product.upsert({
             where: { slug: product.slug },
             update: {},
-            create: product,
+            create: productData,
         })
+
+        // Create images
+        if (images && images.length > 0) {
+            // Delete existing images first to avoid duplicates on re-seed
+            await prisma.productImage.deleteMany({
+                where: { productId: createdProduct.id }
+            })
+
+            for (const imageUrl of images) {
+                await prisma.productImage.create({
+                    data: {
+                        url: imageUrl,
+                        productId: createdProduct.id
+                    }
+                })
+            }
+        }
     }
 
     console.log('Products created')

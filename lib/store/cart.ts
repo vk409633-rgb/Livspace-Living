@@ -2,14 +2,18 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import { Product } from '@prisma/client'
 
+export type CartProduct = Product & {
+    images?: { url: string }[]
+}
+
 export interface CartItem {
-    product: Product
+    product: CartProduct
     quantity: number
 }
 
 interface CartState {
     items: CartItem[]
-    addItem: (product: Product) => void
+    addItem: (product: CartProduct) => void
     removeItem: (productId: string) => void
     updateQuantity: (productId: string, quantity: number) => void
     clearCart: () => void

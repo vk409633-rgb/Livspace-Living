@@ -19,7 +19,7 @@ model User {
   password      String
   phone         String?
   image         String?
-  role          UserRole  @default(CUSTOMER)
+  role          String    @default("CUSTOMER")
   
   // Customer specific fields
   addresses     Address[]
@@ -33,11 +33,11 @@ model User {
   @@index([email])
 }
 
-enum UserRole {
-  CUSTOMER
-  ADMIN
-  STAFF
-}
+// enum UserRole {
+//   CUSTOMER
+//   ADMIN
+//   STAFF
+// }
 
 // Address model
 model Address {
@@ -140,13 +140,10 @@ model Product {
   lowStockThreshold Int @default(10)
   
   // Product specifications
-  specifications Json?   // Flexible JSON for different product types
-  
-  // Tile specific fields (stored in specifications JSON)
-  // size, finish, color, material, waterAbsorption, peiRating, thickness, etc.
-  
+  specifications String?   // JSON string
+
   // Images
-  images      String[]  // Array of image URLs
+  images      ProductImage[]
   thumbnail   String?
   
   // SEO
@@ -177,6 +174,15 @@ model Product {
   @@index([categoryId])
   @@index([supplierId])
   @@index([sku])
+}
+
+model ProductImage {
+  id        String  @id @default(cuid())
+  url       String
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  
+  @@index([productId])
 }
 
 // Cart model
@@ -239,12 +245,12 @@ model Order {
   couponCode  String?
   
   // Payment
-  paymentMethod PaymentMethod
-  paymentStatus PaymentStatus @default(PENDING)
+  paymentMethod String
+  paymentStatus String        @default("PENDING")
   paymentId   String?       // Razorpay payment ID
   
   // Order status
-  status      OrderStatus @default(PENDING)
+  status      String      @default("PENDING")
   
   // Shipping
   trackingNumber String?
@@ -263,28 +269,28 @@ model Order {
   @@index([status])
 }
 
-enum PaymentMethod {
-  COD
-  RAZORPAY
-  STRIPE
-}
+// enum PaymentMethod {
+//   COD
+//   RAZORPAY
+//   STRIPE
+// }
 
-enum PaymentStatus {
-  PENDING
-  PAID
-  FAILED
-  REFUNDED
-}
+// enum PaymentStatus {
+//   PENDING
+//   PAID
+//   FAILED
+//   REFUNDED
+// }
 
-enum OrderStatus {
-  PENDING
-  CONFIRMED
-  PROCESSING
-  SHIPPED
-  DELIVERED
-  CANCELLED
-  RETURNED
-}
+// enum OrderStatus {
+//   PENDING
+//   CONFIRMED
+//   PROCESSING
+//   SHIPPED
+//   DELIVERED
+//   CANCELLED
+//   RETURNED
+// }
 
 // Order Item model
 model OrderItem {
@@ -312,7 +318,7 @@ model Coupon {
   code        String   @unique
   description String?
   
-  discountType DiscountType
+  discountType String
   discountValue Float
   
   minOrderValue Float?
@@ -332,10 +338,10 @@ model Coupon {
   @@index([code])
 }
 
-enum DiscountType {
-  PERCENTAGE
-  FIXED
-}
+// enum DiscountType {
+//   PERCENTAGE
+//   FIXED
+// }
 
 // Bulk Import Log
 model BulkImportLog {
@@ -344,7 +350,7 @@ model BulkImportLog {
   totalRows   Int
   successRows Int
   failedRows  Int
-  errors      Json?
+  errors      String?
   
   importedBy  String
   
@@ -355,7 +361,7 @@ model BulkImportLog {
 model ServiceBooking {
   id          String   @id @default(cuid())
   
-  serviceType ServiceType
+  serviceType String
   
   customerName String
   email       String
@@ -369,7 +375,7 @@ model ServiceBooking {
   
   message     String?
   
-  status      BookingStatus @default(PENDING)
+  status      String        @default("PENDING")
   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -378,20 +384,20 @@ model ServiceBooking {
   @@index([status])
 }
 
-enum ServiceType {
-  INSTALLATION
-  TILE_CUTTING
-  DESIGN_3D
-  SHOWROOM_VISIT
-  B2B_MEMBERSHIP
-}
+// enum ServiceType {
+//   INSTALLATION
+//   TILE_CUTTING
+//   DESIGN_3D
+//   SHOWROOM_VISIT
+//   B2B_MEMBERSHIP
+// }
 
-enum BookingStatus {
-  PENDING
-  CONFIRMED
-  COMPLETED
-  CANCELLED
-}
+// enum BookingStatus {
+//   PENDING
+//   CONFIRMED
+//   COMPLETED
+//   CANCELLED
+// }
 
 // Sample Request model
 model SampleRequest {
@@ -409,7 +415,7 @@ model SampleRequest {
   
   message     String?
   
-  status      RequestStatus @default(PENDING)
+  status      String        @default("PENDING")
   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -432,7 +438,7 @@ model BulkEnquiry {
   quantity    Int
   message     String?
   
-  status      RequestStatus @default(PENDING)
+  status      String        @default("PENDING")
   
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
@@ -440,9 +446,9 @@ model BulkEnquiry {
   @@index([status])
 }
 
-enum RequestStatus {
-  PENDING
-  CONTACTED
-  COMPLETED
-  REJECTED
-}
+// enum RequestStatus {
+//   PENDING
+//   CONTACTED
+//   COMPLETED
+//   REJECTED
+// }

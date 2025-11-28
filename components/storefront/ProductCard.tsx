@@ -7,16 +7,16 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
 import { formatCurrency, calculateDiscount } from "@/lib/utils"
-import { Product } from "@prisma/client"
+import { ProductWithRelations } from "@/types"
 import { useCartStore } from "@/lib/store/cart"
 
 interface ProductCardProps {
-    product: Product
+    product: ProductWithRelations
 }
 
 export function ProductCard({ product }: ProductCardProps) {
     const discount = product.mrp ? calculateDiscount(product.mrp, product.price) : 0
-    const imageUrl = product.images && product.images.length > 0 ? product.images[0] : "/placeholder-product.jpg"
+    const imageUrl = product.images && product.images.length > 0 ? product.images[0].url : "/placeholder-product.jpg"
     const addItem = useCartStore((state) => state.addItem)
 
     return (

@@ -4,6 +4,7 @@ import { Product, Category, Supplier, User, Order, OrderItem, Address } from '@p
 export type ProductWithRelations = Product & {
     category: Category
     supplier: Supplier | null
+    images: { url: string }[]
 }
 
 export type OrderWithRelations = Order & {

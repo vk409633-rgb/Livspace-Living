@@ -67,6 +67,8 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
             orderBy,
             include: {
                 category: true,
+                supplier: true,
+                images: true,
             },
         }),
         prisma.product.count({ where }),

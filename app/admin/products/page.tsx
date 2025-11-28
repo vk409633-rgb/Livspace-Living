@@ -23,6 +23,7 @@ async function getProducts() {
         include: {
             category: true,
             supplier: true,
+            images: true,
         },
     })
     return products
@@ -74,7 +75,7 @@ export default async function AdminProductsPage() {
                                         <div className="relative h-12 w-12 rounded-md overflow-hidden bg-slate-100">
                                             {product.images && product.images.length > 0 ? (
                                                 <Image
-                                                    src={product.images[0]}
+                                                    src={product.images[0].url}
                                                     alt={product.name}
                                                     fill
                                                     className="object-cover"

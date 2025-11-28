@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
     const { slug } = await params
     const product = await prisma.product.findUnique({
         where: { slug },
+        include: { images: true },
     })
 
     if (!product) {
@@ -45,7 +46,7 @@ export async function generateMetadata({ params }: ProductPageProps) {
         title: product.name,
         description: product.shortDescription || product.description?.substring(0, 160),
         openGraph: {
-            images: product.images || [],
+            images: product.images.map(img => img.url) || [],
         },
     }
 }
@@ -58,6 +59,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
         include: {
             category: true,
             supplier: true,
+            images: true,
         },
     })
 
@@ -73,10 +75,23 @@ export default async function ProductPage({ params }: ProductPageProps) {
             isActive: true,
         },
         take: 4,
+        include: {
+            images: true,
+            category: true,
+            supplier: true,
+        },
     })
 
     const discount = product.mrp ? calculateDiscount(product.mrp, product.price) : 0
-    const specifications = product.specifications as Record<string, string> || {}
+
+    let specifications: Record<string, string> = {}
+    try {
+        specifications = product.specifications ? JSON.parse(product.specifications) : {}
+    } catch (e) {
+        console.error("Error parsing specifications:", e)
+    }
+
+    const imageUrls = product.images.map(img => img.url)
 
     return (
         <div className="container-custom py-8 md:py-12">
@@ -95,7 +110,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-16">
                 {/* Image Gallery */}
-                <ImageGallery images={product.images} name={product.name} />
+                <ImageGallery images={imageUrls} name={product.name} />
 
                 {/* Product Info */}
                 <div className="space-y-6">

@@ -6,6 +6,7 @@ import { formatCurrency, calculateDiscount } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { Card } from "@/components/ui/card"
 import { ImageGallery } from "@/components/storefront/ImageGallery"
 import { FeaturedProducts } from "@/components/storefront/FeaturedProducts"
 import {

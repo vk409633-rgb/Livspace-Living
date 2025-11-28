@@ -6,7 +6,7 @@ export function Hero() {
     return (
         <section className="relative bg-slate-900 text-white overflow-hidden">
             {/* Background Image Overlay */}
-            <div className="absolute inset-0 z-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053&auto=format&fit=crop')] bg-cover bg-center" />
+            <div className="absolute inset-0 z-0 opacity-40 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=90&w=2053&auto=format&fit=crop')] bg-cover bg-center" />
 
             {/* Gradient Overlay */}
             <div className="absolute inset-0 z-10 bg-gradient-to-r from-slate-900 via-slate-900/80 to-transparent" />

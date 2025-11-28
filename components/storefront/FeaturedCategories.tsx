@@ -6,37 +6,37 @@ const categories = [
     {
         name: "Premium Tiles",
         slug: "tiles",
-        image: "https://images.unsplash.com/photo-1581141849291-1125c7b692b5?q=80&w=1000&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1581141849291-1125c7b692b5?q=90&w=1920&auto=format&fit=crop",
         description: "Ceramic, Vitrified, Porcelain & more"
     },
     {
         name: "Modern Furniture",
         slug: "furniture",
-        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=90&w=1920&auto=format&fit=crop",
         description: "Sofas, Beds, Dining & Living"
     },
     {
         name: "Sanitary Ware",
         slug: "sanitary-ware",
-        image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=80&w=1000&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1584622050111-993a426fbf0a?q=90&w=1920&auto=format&fit=crop",
         description: "Basins, Toilets, Faucets & Showers"
     },
     {
         name: "Modular Kitchen",
         slug: "modular-kitchen",
-        image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=80&w=1000&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?q=90&w=1920&auto=format&fit=crop",
         description: "Complete kitchen solutions"
     },
     {
         name: "Lighting",
         slug: "lighting",
-        image: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=80&w=1000&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?q=90&w=1920&auto=format&fit=crop",
         description: "LEDs, Chandeliers & Decorative"
     },
     {
         name: "Tools & Adhesives",
         slug: "tools",
-        image: "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=80&w=1000&auto=format&fit=crop",
+        image: "https://images.unsplash.com/photo-1581244277943-fe4a9c777189?q=90&w=1920&auto=format&fit=crop",
         description: "Installation tools & materials"
     }
 ]
@@ -66,6 +66,7 @@ export function FeaturedCategories() {
                                 src={category.image}
                                 alt={category.name}
                                 fill
+                                quality={100}
                                 className="object-cover transition-transform duration-500 group-hover:scale-110"
                                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />

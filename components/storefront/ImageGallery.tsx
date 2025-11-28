@@ -12,7 +12,7 @@ interface ImageGalleryProps {
 export function ImageGallery({ images, name }: ImageGalleryProps) {
     const [selectedImage, setSelectedImage] = useState(0)
 
-    const displayImages = images.length > 0 ? images : ["https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"]
+    const displayImages = images.length > 0 ? images : ["https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1920&q=90"]
 
     return (
         <div className="flex flex-col gap-4">
@@ -21,6 +21,7 @@ export function ImageGallery({ images, name }: ImageGalleryProps) {
                     src={displayImages[selectedImage]}
                     alt={name}
                     fill
+                    quality={100}
                     className="object-contain p-4"
                     priority
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -42,6 +43,7 @@ export function ImageGallery({ images, name }: ImageGalleryProps) {
                                 src={image}
                                 alt={`${name} ${index + 1}`}
                                 fill
+                                quality={100}
                                 className="object-cover"
                                 sizes="80px"
                             />

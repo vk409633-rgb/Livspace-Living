@@ -71,6 +71,7 @@ export function CartSheet() {
                                             src={getProductImageUrl(item.product.images, item.product.category?.slug)}
                                             alt={item.product.name}
                                             fill
+                                            quality={100}
                                             className="object-cover"
                                         />
                                     </div>
